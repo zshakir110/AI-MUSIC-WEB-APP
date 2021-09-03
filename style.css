@@ -21,15 +21,14 @@ body
     float: center ;
 }
 
-#start
+.play_button
 {
+    width: 130px;
     font-size: 25px;
-    margin: 5px;
 }
 
 canvas
 {
-    border: solid lavender 5px;
-    border-radius: 20px;
-    box-shadow:darkgrey 5px 5px 5px;
+    border:whitesmoke 5px solid;
+    border-radius: 25px;
 }
