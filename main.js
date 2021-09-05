@@ -1,4 +1,12 @@
-song = "";
+song1 = "";
+song2 = "";
+
+song1_status = "";
+song2_status = "";
+
+scoreRightWrist = 0;
+scoreLeftWrist = 0;
+
 rightWristX = 0;
 rightWristY = 0;
 
@@ -8,7 +16,7 @@ leftWristY = 0;
 function preload()
 {
 	song1 = loadSound("TS-song.mp3.mp3");
-    song2 = loadSound("JB-song.mp3.mp3");
+	song2 = loadSound("JB-song.mp3.mp3");
 }
 
 function setup() {
@@ -30,9 +38,10 @@ function gotPoses(results)
 {
   if(results.length > 0)
   {
-	console.log(results)
+	console.log(results);
+	scoreRightWrist =  results[0].pose.keypoints[10].score;
 	scoreLeftWrist =  results[0].pose.keypoints[9].score;
-	console.log(" scoreLeftWrist = " + scoreLeftWrist);
+	console.log("scoreRightWrist = " + scoreRightWrist + "scoreLeftWrist = " + scoreLeftWrist);
 	
 	rightWristX = results[0].pose.rightWrist.x;
 	rightWristY = results[0].pose.rightWrist.y;
@@ -46,21 +55,40 @@ function gotPoses(results)
 }
 
 function draw() {
-	image(video, 0, 0, 500, 170);
+	image(video, 0, 0, 600, 500);
+	
+	song1_status = song1.isPlaying();
+	song2_status = song2.isPlaying();
 
-    fill("#FF0000");
-    stroke("#FF0000")   
+	fill("#FF0000");
+	stroke("#FF0000");
 
-	if(scoreLeftWrist > 0.2)
-    {
-		circle(leftWristX,leftWristY,20);
-		
-		if(song1 = false)
-        {
-			play(song1)
-			heading("You Belong With Me")
+	if(scoreRightWrist > 0.2)
+	{ 
+		circle(rightWristX,rightWristY,20);
+
+			song2.stop();
+
+		if(song1_status == false)
+		{
+			song1.play();
+			document.getElementById("song").innerHTML = "Playing - Taylor Swift Song"
 		}
 	}
+
+	if(scoreLeftWrist > 0.2)
+	{
+		circle(leftWristX,leftWristY,20);
+
+			song1.stop();
+
+		if(song2_status == false)
+		{
+			song2.play();
+			document.getElementById("song").innerHTML = "Playing - Justin Bieber Song"
+		}
+	}
+
 }
 
 function play()
@@ -69,3 +97,10 @@ function play()
 	song.setVolume(1);
 	song.rate(1);
 }
+
+
+
+
+
+
+

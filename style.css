@@ -1,34 +1,30 @@
 .heading
 {
-    font-size: 25px;
-    width: 100%;
-    margin: 0px;
+  font-size: 23px;
+  width: 100%;
+  margin: 0px;
 }
 
 .note
 {
-    font-size: 15px;
-    color: black;
+  font-size: 15px;
+  color: black;
 }
 
 body
 {
-    background-size: cover;
+  background-size: cover;	
 }
 
-.div_start
-{
-    float: center ;
-}
-
-.play_button
-{
-    width: 130px;
-    font-size: 25px;
-}
-
-canvas
-{
-    border:whitesmoke 5px solid;
-    border-radius: 25px;
-}
+  #song
+  {
+  	font-size: 23px;
+  	margin: 15px;
+  }
+  
+    canvas 
+  {
+    border:5px solid white;
+    border-radius:20px;
+    box-shadow: 5px 5px 5px #73cfd8;
+  }
